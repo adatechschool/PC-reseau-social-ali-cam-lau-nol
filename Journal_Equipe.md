@@ -8,3 +8,6 @@ L'étape une de la configuration de la fiche vibe est faite.
 
 Mardi 18 mai 2021:
 Nous sommes passées à l'étape de 2 de la fiche puis nous avons réussi à faire les points 1,2,3.
+
+Mercredi 19 mai 2021:
+On a terminé le niveau 1 du projet et débutons le niveau 2.
