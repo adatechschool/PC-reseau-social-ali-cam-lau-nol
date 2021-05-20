@@ -51,7 +51,7 @@
                 /**
                  * Etape 2: se connecter à la base de donnée
                  */
-                $mysqli = new mysqli("localhost:8889", "root", "root", "socialnetwork");
+                $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
 
                 /**
                  * Etape 3: récupérer le nom de l'utilisateur
@@ -84,7 +84,9 @@
                     <h3>Mes paramètres</h3>
                     <dl>
                         <dt>Pseudo</dt>
-                        <dd><?php echo $user['alias'] ?></dd>
+                        <dd><nav>
+                        <a href="wall.php?user_id=<?php echo $user['id'] ?>"><?php echo $user['alias'] ?></a>
+                    </nav></dd>
                         <dt>Email</dt>
                         <dd><?php echo $user['email'] ?></dd>
                         <dt>Nombre de message</dt>
