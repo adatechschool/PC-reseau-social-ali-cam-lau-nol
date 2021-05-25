@@ -88,12 +88,15 @@
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
+                $listPosts = [];
+               
+
                 /**
                  * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
                  */
                 while ($post = $lesInformations->fetch_assoc())
                 {
-
+                    
                     //echo "<pre>" . print_r($post, 1) . "</pre>";
                     ?>                
                     <article>
@@ -111,10 +114,66 @@
                             <a href="">#<?php echo $post['taglist'] ?></a>      
                         </footer>
                     </article>
-                <?php } ?>
+                <?php
+            $listPosts[$post['author_id']] = $post['author_name']; 
+            }
+            $enCoursDeTraitement = isset($_POST['auteur']);
+            if ($enCoursDeTraitement)
+            {
+                // on ne fait ce qui suit que si un formulaire a été soumis.
+                // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travail se situe
+                // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
+                //echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                // et complétez le code ci dessous en remplaçant les ???
+                $authorId = $_POST['auteur'];
+                $postContent = $_POST['message'];
 
+
+                //Etape 3 : Petite sécurité
+                // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
+                $authorId = intval($mysqli->real_escape_string($authorId));
+                $postContent = $mysqli->real_escape_string($postContent);
+                //Etape 4 : construction de la requete
+                $lInstructionSql = "INSERT INTO `posts` "
+                        . "(`id`, `user_id`, `content`, `created`, `permalink`, `post_id`) "
+                        . "VALUES (NULL, "
+                        . "" . $authorId . ", "
+                        . "'" . $postContent . "', "
+                        . "NOW(), "
+                        . "'', "
+                        . "NULL);"
+                        . "";
+                
+                // Etape 5 : execution
+                $ok = $mysqli->query($lInstructionSql);
+                if ( ! $ok)
+                {
+                    echo "Impossible d'ajouter le message: " . $mysqli->error;
+                } else
+                {
+                    echo "Message posté en tant que :" . $listAuteurs[$authorId];
+                }
+            } ?>
 
             </main>
+                <aside>
+                <form action="wall.php" method="post">
+                        <input type='hidden' name='???' value='achanger'>
+                        <dl>
+                            <dt><label for='auteur'>Auteur</label></dt>
+                            <dd><select name='auteur'>
+                                    <?php
+                                    foreach ($listPosts as $id => $alias)
+                                        echo "<option value='$id'>$alias</option>";
+                                    ?>
+                                </select></dd>
+                            <dt><label for='message'>Message</label></dt>
+                            <dd><textarea name='message'></textarea></dd>
+                        </dl>
+                        <input type='submit'>
+                    </form>           
+                </aside>
+            
         </div>
     </body>
 </html>

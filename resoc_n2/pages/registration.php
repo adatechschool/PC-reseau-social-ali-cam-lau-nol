@@ -55,7 +55,7 @@
 
 
                         //Etape 3 : Ouvrir une connexion avec la base de donnée.
-                        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
+                        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
                         
                         
                         //Etape 4 : Petite sécurité
@@ -75,11 +75,10 @@
                                 . ");";
                         // Etape 6: exécution de la requete
                         $ok = $mysqli->query($lInstructionSql);
-                        echo "<pre>" . print_r($lInstructionSql) . "</pre>";
                         if ( ! $ok)
                         {
                             echo "L'inscription a échoué : " . $mysqli->error;
-                            echo "<pre>" . print_r($mysqli->error) . "</pre>";
+                            
                         } else
                         {
                             echo "Votre inscription est un succès : " . $new_alias;
@@ -87,7 +86,7 @@
                         }
                     }
                     ?>                     
-                    <form action="registration.php" method="get">
+                    <form action="registration.php" method="post">
                         <input type='hidden'name='???' value='achanger'>
                         <dl>
                             <dt><label for='pseudo'>Pseudo</label></dt>

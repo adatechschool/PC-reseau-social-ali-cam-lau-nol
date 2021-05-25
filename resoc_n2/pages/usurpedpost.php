@@ -43,7 +43,7 @@ session_start();
                     /**
                      * BD
                      */
-                    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
+                    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
                     /**
                      * Récupération de la liste des auteurs
                      */
@@ -53,7 +53,7 @@ session_start();
                     while ($user = $lesInformations->fetch_assoc())
                     {
                         $listAuteurs[$user['id']] = $user['alias'];
-                        echo "<pre>" . print_r('coucou', 1) . "</pre>";
+    
                 
                     }
 
@@ -69,7 +69,7 @@ session_start();
                         // on ne fait ce qui suit que si un formulaire a été soumis.
                         // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travail se situe
                         // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                        echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                        //echo "<pre>" . print_r($_POST, 1) . "</pre>";
                         // et complétez le code ci dessous en remplaçant les ???
                         $authorId = $_POST['auteur'];
                         $postContent = $_POST['message'];
@@ -89,7 +89,7 @@ session_start();
                                 . "'', "
                                 . "NULL);"
                                 . "";
-                        echo $lInstructionSql;
+                        
                         // Etape 5 : execution
                         $ok = $mysqli->query($lInstructionSql);
                         if ( ! $ok)
@@ -101,7 +101,7 @@ session_start();
                         }
                     }
                     ?>                     
-                    <form action="usurpedpost.php" method="get">
+                    <form action="usurpedpost.php" method="post">
                         <input type='hidden' name='???' value='achanger'>
                         <dl>
                             <dt><label for='auteur'>Auteur</label></dt>
