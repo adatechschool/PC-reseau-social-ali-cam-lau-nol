@@ -60,6 +60,17 @@
                     <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
                         (n° <?php echo $_GET['user_id'] ?>)
                     </p>
+                    
+                <form action="wall.php?user_id= <?php echo $_GET['user_id'] ?>" method="post">
+                        <input type='hidden' name='auteur' value= '<?php echo $_GET['user_id'] ?>'>
+                        <dl>
+
+                            <dt><label for='message'>Message</label></dt>
+                            <dd><textarea name='message'></textarea></dd>
+                        </dl>
+                        <input type='submit'>
+                    </form>           
+                
                 </section>
             </aside>
             <main>
@@ -156,23 +167,7 @@
             } ?>
 
             </main>
-                <aside>
-                <form action="wall.php" method="post">
-                        <input type='hidden' name='???' value='achanger'>
-                        <dl>
-                            <dt><label for='auteur'>Auteur</label></dt>
-                            <dd><select name='auteur'>
-                                    <?php
-                                    foreach ($listPosts as $id => $alias)
-                                        echo "<option value='$id'>$alias</option>";
-                                    ?>
-                                </select></dd>
-                            <dt><label for='message'>Message</label></dt>
-                            <dd><textarea name='message'></textarea></dd>
-                        </dl>
-                        <input type='submit'>
-                    </form>           
-                </aside>
+              
             
         </div>
     </body>
