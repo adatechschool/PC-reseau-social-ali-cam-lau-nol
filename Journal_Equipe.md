@@ -21,3 +21,8 @@ Niveau 2: fini registration, login et usurpedpost
 On a finalisé l'ajout d'un message en mode non identifié ainsi qu'en tant que user connecté. 
 On a créé un bouton "S'abonner", il nous reste á lui associer une action et faire une modification de la base de donnée. 
 On a créé un header pour centraliser les infos dans chaque fichier. 
+
+Mercredi 26 mai 2021 :
+Niveau 2 : on a réussi l'étape 5 !! (ajout d'un formulaire d'abonnement de l'utilisateur connecté).
+On a corrigé l'usurpation d'identité lors de l'envoi d'un message.
+A FAIRE : retirer le formulaire d'envoi de message de n'importe quel mur + changer le bouton "S'abonner" en "Abonné" + créer des conditions pour restreindre les abonnements
