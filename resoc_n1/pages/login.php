@@ -1,5 +1,7 @@
 <?php 
 require 'header.php'; 
+session_destroy();
+session_start();
 ?>
 
         <div id="wrapper" >
