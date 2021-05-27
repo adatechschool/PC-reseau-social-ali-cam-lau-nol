@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : mer. 26 mai 2021 à 14:32
--- Version du serveur :  10.3.29-MariaDB-0ubuntu0.20.04.1
--- Version de PHP : 7.4.3
+-- Host: localhost:3306
+-- Generation Time: May 27, 2021 at 08:13 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `socialnetwork`
+-- Database: `socialnetwork`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `followers`
+-- Table structure for table `followers`
 --
 
 CREATE TABLE `followers` (
@@ -35,7 +35,7 @@ CREATE TABLE `followers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `followers`
+-- Dumping data for table `followers`
 --
 
 INSERT INTO `followers` (`id`, `followed_user_id`, `following_user_id`) VALUES
@@ -49,12 +49,15 @@ INSERT INTO `followers` (`id`, `followed_user_id`, `following_user_id`) VALUES
 (8, 1, 3),
 (9, 1, 7),
 (10, 1, 6),
-(11, 1, 4);
+(11, 1, 4),
+(12, 4, 8),
+(13, 8, 8),
+(14, 8, 8);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `likes`
+-- Table structure for table `likes`
 --
 
 CREATE TABLE `likes` (
@@ -64,7 +67,7 @@ CREATE TABLE `likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `likes`
+-- Dumping data for table `likes`
 --
 
 INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
@@ -86,7 +89,7 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
@@ -100,7 +103,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`, `permalink`, `post_id`) VALUES
@@ -116,24 +119,20 @@ INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`, `permal
 (10, 7, 'Le #sport est un ensemble d\'exercices physiques se pratiquant sous forme de jeux individuels ou collectifs pouvant donner lieu à des compétitions. Le sport est un phénomène presque universel dans le temps et dans l\'espace humain. La Grèce antique, la Rome antique, Byzance, l\'Occident médiéval puis moderne, mais aussi l\'Amérique précolombienne ou l\'Asie, sont tous marqués par l\'importance du sport. Certaines périodes sont surtout marquées par des interdits. ', '2020-11-30 18:31:16', NULL, '', 0),
 (11, 8, 'Va te faire cuire le cul. ', '2021-05-25 11:17:02', NULL, '', NULL),
 (12, 4, 'J\'ai trouvé Macron très sexy dans la vidéo de McFly et Carlito. ', '2021-05-25 11:19:27', NULL, '', NULL),
-(13, 4, 'J\'ai trouvé Macron très sexy dans la vidéo de McFly et Carlito. ', '2021-05-25 11:23:30', NULL, '', NULL),
-(14, 5, 'Vivement qu\'on graille bordel!', '2021-05-25 12:09:25', NULL, '', NULL),
-(15, 5, 'Vivement qu\'on graille bordel!', '2021-05-25 12:10:22', NULL, '', NULL),
-(16, 5, 'Vivement qu\'on graille bordel!', '2021-05-25 12:10:39', NULL, '', NULL),
 (17, 5, 'Vivement qu\'on graille bordel!', '2021-05-25 12:10:50', NULL, '', NULL),
 (18, 8, 'J\'aime le barbeuc', '2021-05-25 12:11:47', NULL, '', NULL),
 (24, 5, 'On se met bien.', '2021-05-25 14:38:38', NULL, '', NULL),
-(25, 5, 'MACRON DEMISSION!!!', '2021-05-25 14:41:50', NULL, '', NULL),
-(26, 5, 'MACRON DEMISSION!!!', '2021-05-25 14:42:09', NULL, '', NULL),
 (27, 5, 'MACRON DEMISSION!!!', '2021-05-25 15:16:08', NULL, '', NULL),
-(28, 8, 'Enfourchons le tigre!', '2021-05-25 15:34:19', NULL, '', NULL),
-(29, 8, 'Enfourchons le tigre!', '2021-05-25 15:34:24', NULL, '', NULL),
-(30, 8, 'Enfourchons le tigre!', '2021-05-25 16:41:14', NULL, '', NULL);
+(30, 8, 'Enfourchons le tigre!', '2021-05-25 16:41:14', NULL, '', NULL),
+(31, 5, 'Coucou Félicie, ça farte ?', '2021-05-26 14:45:42', NULL, '', NULL),
+(33, 4, 'J\'ai envie de dormir.', '2021-05-26 14:47:01', NULL, '', NULL),
+(37, 4, 'J\'aime les frites.', '2021-05-26 16:06:13', NULL, '', NULL),
+(38, 8, 'Je préfère le steak.', '2021-05-26 16:06:29', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `posts_tags`
+-- Table structure for table `posts_tags`
 --
 
 CREATE TABLE `posts_tags` (
@@ -143,7 +142,7 @@ CREATE TABLE `posts_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `posts_tags`
+-- Dumping data for table `posts_tags`
 --
 
 INSERT INTO `posts_tags` (`id`, `post_id`, `tag_id`) VALUES
@@ -162,7 +161,7 @@ INSERT INTO `posts_tags` (`id`, `post_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tags`
+-- Table structure for table `tags`
 --
 
 CREATE TABLE `tags` (
@@ -171,7 +170,7 @@ CREATE TABLE `tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `tags`
+-- Dumping data for table `tags`
 --
 
 INSERT INTO `tags` (`id`, `label`) VALUES
@@ -188,7 +187,7 @@ INSERT INTO `tags` (`id`, `label`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -199,7 +198,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `alias`) VALUES
@@ -213,11 +212,11 @@ INSERT INTO `users` (`id`, `email`, `password`, `alias`) VALUES
 (8, 'foutagedegueule@gmail.com', '6074c6aa3488f3c2dddff2a7ca821aab', 'Foo tage');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `followers`
+-- Indexes for table `followers`
 --
 ALTER TABLE `followers`
   ADD PRIMARY KEY (`id`),
@@ -225,7 +224,7 @@ ALTER TABLE `followers`
   ADD KEY `fk_users_has_users_users1_idx` (`followed_user_id`);
 
 --
--- Index pour la table `likes`
+-- Indexes for table `likes`
 --
 ALTER TABLE `likes`
   ADD PRIMARY KEY (`id`),
@@ -233,7 +232,7 @@ ALTER TABLE `likes`
   ADD KEY `fk_users_has_posts_users1_idx` (`user_id`);
 
 --
--- Index pour la table `posts`
+-- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
@@ -241,7 +240,7 @@ ALTER TABLE `posts`
   ADD KEY `fk_posts_posts1_idx` (`parent_id`);
 
 --
--- Index pour la table `posts_tags`
+-- Indexes for table `posts_tags`
 --
 ALTER TABLE `posts_tags`
   ADD PRIMARY KEY (`id`),
@@ -249,14 +248,14 @@ ALTER TABLE `posts_tags`
   ADD KEY `fk_posts_has_tags_posts1_idx` (`post_id`);
 
 --
--- Index pour la table `tags`
+-- Indexes for table `tags`
 --
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `label_UNIQUE` (`label`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -264,72 +263,72 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `alias_UNIQUE` (`alias`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `followers`
+-- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT pour la table `likes`
+-- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT pour la table `posts`
+-- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT pour la table `posts_tags`
+-- AUTO_INCREMENT for table `posts_tags`
 --
 ALTER TABLE `posts_tags`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT pour la table `tags`
+-- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `followers`
+-- Constraints for table `followers`
 --
 ALTER TABLE `followers`
   ADD CONSTRAINT `fk_users_has_users_users1` FOREIGN KEY (`followed_user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_users_has_users_users2` FOREIGN KEY (`following_user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `likes`
+-- Constraints for table `likes`
 --
 ALTER TABLE `likes`
   ADD CONSTRAINT `fk_users_has_posts_posts1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `fk_users_has_posts_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `posts`
+-- Constraints for table `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `fk_posts_posts1` FOREIGN KEY (`parent_id`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `fk_posts_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `posts_tags`
+-- Constraints for table `posts_tags`
 --
 ALTER TABLE `posts_tags`
   ADD CONSTRAINT `fk_posts_has_tags_posts1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
