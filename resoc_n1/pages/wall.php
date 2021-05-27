@@ -52,14 +52,6 @@ require 'header.php';
                     </form>
                     <?php   
                 } else {
-                    ?>
-                    <form action="wall.php?user_id=<?php echo $_GET['user_id'] ?>" method="post">
-                    <input type='hidden' name='new_follower' value= '<?php echo $_SESSION['connected_id'] ?>'>
-                        
-                        <input type='submit' id='buttonFollowing' name='click' value= "S'abonner">
-                        <!-- <input onclick="change()" type="submit" value="S'abonner" id="buttonFollowing"></input> -->
-                    </form>
-                    <?php
                     require 'tofollow.php';
                     require 'following.php';
                 }

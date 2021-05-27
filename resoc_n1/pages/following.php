@@ -2,19 +2,22 @@
     /**
      * Etape 1: récupérer le tableau followers
      */
-    $followersInSql = "SELECT * FROM `posts`";
+    $connectedId= $_SESSION['connected_id'];
+    $followersInSql = "SELECT * FROM  `followers`  WHERE `followers`.`following_user_id` = ".intval($connectedId)." AND ".$_GET['user_id']."= `followers`.`followed_user_id`" ; 
     $infoFollowers = $mysqli->query($followersInSql);
     $follower = $infoFollowers->fetch_assoc();
-    echo "<pre>" . print_r($follower, 1) . "</pre>";
-    if ($_SESSION['connected_id'] === $follower){
+
+    if ($follower){
         ?>
-            <input type='button' id='buttonFollowing' name='click' value= "Abonne.e">
+             <input type='button' id='buttonFollowing' name='click' value= "Abonné.e">
             <?php
-            echo "<pre>" . print_r($follower, 1) . "</pre>";
             
     } else { ?>
-        <input type='button' id='buttonFollowing' name='click' value= "s'abonner">
+    <form action="wall.php?user_id=<?php echo $_GET['user_id'] ?>" method="post">
+        <input type='hidden' name='new_follower' value= '<?php echo $_SESSION['connected_id'] ?>'>
+        <input type='submit' id='buttonFollowing' name='click' value= "S'abonner">
+        </form>
         <?php
-        echo "<pre>" . print_r($follower, 1) . "</pre>";
+        
     }
 ?>    

@@ -26,3 +26,27 @@ Mercredi 26 mai 2021 :
 Niveau 2 : on a réussi l'étape 5 !! (ajout d'un formulaire d'abonnement de l'utilisateur connecté).
 On a corrigé l'usurpation d'identité lors de l'envoi d'un message.
 A FAIRE : retirer le formulaire d'envoi de message de n'importe quel mur + changer le bouton "S'abonner" en "Abonné" + créer des conditions pour restreindre les abonnements
+
+Jeudi 27 mai 2021 :
+
+On a réussi à gérer les conditions d'abonnements et changé le bouton S'abonner en Abonné.e. 
+On peut envoyer un message que sur le mur de la personne connectée. 
+On a réussi à faire tous nos objectifs!! 
+
+Retrospective
+
+Foo Tage / Alina, Camille, Laura, Nolwenn
+
+On a aimé / on veut garder:
+- la collaboration
+-  équilibre en terme de prises de décision
+- bon rythme de travail/ on avance au même rythme 
+- pas de frustration lors de l'exécution des tâches
+- on a appris plein de choses 
+- on a tenté des choses en dehors des consignes
+
+On veut améliorer:
+- on a pas fait de features car projet très guidé 
+
+
+
