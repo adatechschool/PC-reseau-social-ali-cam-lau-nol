@@ -61,6 +61,7 @@ require 'header.php';
                     </form>
                     <?php
                     require 'tofollow.php';
+                    require 'following.php';
                 }
                     ?>
                 

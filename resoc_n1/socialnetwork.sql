@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 27, 2021 at 08:13 AM
--- Server version: 5.7.24
--- PHP Version: 7.4.1
+-- Host: localhost:8889
+-- Generation Time: May 27, 2021 at 01:52 PM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,20 +37,23 @@ CREATE TABLE `followers` (
 --
 
 INSERT INTO `followers` (`id`, `followed_user_id`, `following_user_id`) VALUES
+(8, 1, 3),
+(11, 1, 4),
+(4, 1, 5),
+(10, 1, 6),
+(9, 1, 7),
+(35, 1, 8),
+(5, 2, 5),
+(19, 2, 8),
+(7, 3, 2),
+(20, 3, 8),
+(6, 4, 5),
+(12, 4, 8),
 (1, 5, 3),
 (2, 5, 6),
 (3, 5, 7),
-(4, 1, 5),
-(5, 2, 5),
-(6, 4, 5),
-(7, 1, 2),
-(8, 1, 3),
-(9, 1, 7),
-(10, 1, 6),
-(11, 1, 4),
-(12, 4, 8),
-(13, 8, 8),
-(14, 8, 8);
+(16, 5, 8),
+(40, 7, 8);
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,9 @@ INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`, `permal
 (31, 5, 'Coucou Félicie, ça farte ?', '2021-05-26 14:45:42', NULL, '', NULL),
 (33, 4, 'J\'ai envie de dormir.', '2021-05-26 14:47:01', NULL, '', NULL),
 (37, 4, 'J\'aime les frites.', '2021-05-26 16:06:13', NULL, '', NULL),
-(38, 8, 'Je préfère le steak.', '2021-05-26 16:06:29', NULL, '', NULL);
+(38, 8, 'Je préfère le steak.', '2021-05-26 16:06:29', NULL, '', NULL),
+(49, 8, 'Coucou', '2021-05-27 10:33:05', NULL, '', NULL),
+(50, 8, 'Привет', '2021-05-27 10:51:10', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -220,6 +223,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `alias`) VALUES
 --
 ALTER TABLE `followers`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `followed_user_id` (`followed_user_id`,`following_user_id`) USING BTREE,
   ADD KEY `fk_users_has_users_users2_idx` (`following_user_id`),
   ADD KEY `fk_users_has_users_users1_idx` (`followed_user_id`);
 
@@ -270,7 +274,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -282,7 +286,7 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `posts_tags`
@@ -333,7 +337,6 @@ ALTER TABLE `posts`
 ALTER TABLE `posts_tags`
   ADD CONSTRAINT `fk_posts_has_tags_posts1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `fk_posts_has_tags_tags1` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
