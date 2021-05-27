@@ -37,24 +37,34 @@ require 'header.php';
                     <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
                         (n° <?php echo $_GET['user_id'] ?>)
                     </p>
-                    
-                <form action="wall.php?user_id=<?php echo $_GET['user_id'] ?>" method="post">
+
+                <?php 
+                if ($_SESSION['connected_id'] === $_GET['user_id'])
+                {
+                    ?>
+                    <form action="wall.php?user_id=<?php echo $_SESSION['connected_id'] ?>" method="post">
                         <input type='hidden' name='auteur' value= '<?php echo $_SESSION['connected_id'] ?>'>
                         <dl>
-
                             <dt><label for='message'>Message</label></dt>
                             <dd><textarea name='message'></textarea></dd>
                         </dl>
                         <input type='submit'>
-                    </form>           
-                
-                <form action="wall.php?user_id=<?php echo $_GET['user_id'] ?>" method="post">
+                    </form>
+                    <?php   
+                } else {
+                    ?>
+                    <form action="wall.php?user_id=<?php echo $_GET['user_id'] ?>" method="post">
                     <input type='hidden' name='new_follower' value= '<?php echo $_SESSION['connected_id'] ?>'>
-                        <input type='submit' name='click' value= "S'abonner"> 
-                </form> 
-                <?php 
-                require 'tofollow.php'; 
-                ?>
+                        
+                        <input type='submit' id='buttonFollowing' name='click' value= "S'abonner">
+                        <!-- <input onclick="change()" type="submit" value="S'abonner" id="buttonFollowing"></input> -->
+                    </form>
+                    <?php
+                    require 'tofollow.php';
+                }
+                    ?>
+                
+               
                 </section>
             </aside>
             <main>
